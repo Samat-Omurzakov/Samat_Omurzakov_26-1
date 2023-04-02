@@ -12,7 +12,8 @@ def products_view(request):
     if request.method == 'GET':
         products = Product.objects.all()
         context = {
-            'products': products
+            'products': products,
+            'user': request.user
         }
         return render(request, 'products/products.html', context=context)
 
@@ -23,7 +24,8 @@ def product_detail_view(request, id):
         context = {
             'product': product,
             'reviews': product.review_set.all(),
-            'form': ReviewCreateForm
+            'form': ReviewCreateForm,
+            'user': request.user
         }
         return render(request, 'products/detail.html', context=context)
     if request.method == "POST":
