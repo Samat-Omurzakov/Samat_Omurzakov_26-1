@@ -31,14 +31,14 @@
                 <img src="{{ product.image.url }}" alt="" height="500">
             {% endif %}
         </div>
-        <div class="info">ц
+        <div class="info">
             <h1>{{ product.name }}</h1>
             <h6>{{ product.description }}</h6>
             <h4>Price: {{ product.price }}$</h4>
         </div>
         {% if not user.is_anonymous %}
             <div class="create_review">
-                <form action="/products/{{ product.id }}/" method="post">
+                <form action="/products/{{ id }}/" method="post">
                     {% csrf_token %}
                     {{ form }}
                     <input type="submit" value="Add comment">
